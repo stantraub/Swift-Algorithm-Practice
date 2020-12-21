@@ -5,16 +5,14 @@ func maxDepth(_ root: TreeNode?) -> Int {
     var curNode = root
 
     func helper(_ node: TreeNode?, _ depth: Int) {
-        if (node == nil) {
-            return
-        } else {
-            if (depth > max) {
-                max = depth
-            }
-
-            helper(node?.left, depth + 1)
-            helper(node?.right, depth + 1)
+        guard node != nil else { return }
+        
+        if (depth > max) {
+            max = depth
         }
+
+        helper(node?.left, depth + 1)
+        helper(node?.right, depth + 1)
     }
 
     helper(curNode, max)

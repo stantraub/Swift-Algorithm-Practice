@@ -1,16 +1,15 @@
 func backspaceCompare(_ S: String, _ T: String) -> Bool {
-    return compareHelper(S) == compareHelper(T)
+    return compareHelper(string: S) == compareHelper(string: T)
 }
 
-func compareHelper(_ str: String) -> String {
-    var arr = Array(str)
+func compareHelper(string: String) -> String {
     var stack = [Character]()
     
-    for ele in arr {
-        if ele == "#" {
-            stack.popLast()
+    for char in string {
+        if char != "#" {
+            stack.append(char)
         } else {
-            stack.append(ele)
+            stack.popLast()
         }
     }
     

@@ -2,6 +2,7 @@ func backspaceCompare(_ S: String, _ T: String) -> Bool {
     return compareHelper(string: S) == compareHelper(string: T)
 }
 
+
 func compareHelper(string: String) -> String {
     var stack = [Character]()
     

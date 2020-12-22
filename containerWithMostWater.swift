@@ -10,3 +10,24 @@ func maxArea(_ height: [Int]) -> Int {
 
     return maxA
 }
+
+// O(N) time | O(1) space solution
+
+func maxArea(_ height: [Int]) -> Int {
+    var (p1, p2, maxA) = (0, height.count - 1, 0)
+
+    while p1 < p2 {
+        let currentHeight = min(height[p1], height[p2])
+        let currentWidth = p2 - p1
+        let area = currentHeight * currentWidth
+        maxA = max(area, maxA)
+
+        if height[p1] < height[p2] {
+           p1 += 1 
+        } else {
+           p2 -= 1
+        }
+    }
+
+    return maxA
+}

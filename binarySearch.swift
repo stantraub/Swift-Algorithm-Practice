@@ -2,6 +2,7 @@ func binarySearch(array: [Int], target: Int) -> Int {
 	return binarySearchHelper(array, target, 0, array.count - 1)
 }
 
+// O(logN)
 func binarySearchHelper(_ array: [Int], _ target: Int, _ leftPointer: Int, _ rightPointer: Int) -> Int {
 	if leftPointer > rightPointer {
 		return -1

@@ -1,30 +1,43 @@
 class MyQueue {
 
     /** Initialize your data structure here. */
-    var queue: [Int]
+    var inStack: [Int]
+    var outStack: [Int]
     
     init() {
-        self.queue = [Int]()
+        self.inStack = [Int]()
+        self.outStack = [Int]()
     }
     
     /** Push element x to the back of queue. */
     func push(_ x: Int) {
-        queue.append(x)
+        inStack.append(x)
     }
     
     /** Removes the element from in front of queue and returns that element. */
     func pop() -> Int {
-        let lastEle = queue.removeFirst()
-        return lastEle
+        if outStack.isEmpty {
+            while inStack.count > 0 {
+                outStack.append(inStack.removeLast())
+            }
+        }
+        
+        return outStack.removeLast()
     }
     
     /** Get the front element. */
     func peek() -> Int {
-        return queue[0]
+        if outStack.isEmpty {
+            while inStack.count > 0 {
+                outStack.append(inStack.removeLast())
+            }
+        }
+        
+        return outStack[outStack.count - 1]
     }
     
     /** Returns whether the queue is empty. */
     func empty() -> Bool {
-        return queue.isEmpty
+        return inStack.isEmpty && outStack.isEmpty
     }
 }

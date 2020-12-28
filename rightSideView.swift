@@ -14,11 +14,7 @@ func rightSideView(_ root: TreeNode?) -> [Int] {
             }
             if let left = curNode.left { queue.append(left) }
             if let right = curNode.right { queue.append(right ) }
-
-
         }
-
-
     }
 
     return res

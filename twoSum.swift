@@ -1,4 +1,4 @@
-func twoNumberSum(_ array: inout [Int], _ targetSum: Int) -> [Int] {
+func twoNumberSum(_ array: [Int], _ targetSum: Int) -> [Int] {
 	var complements = Set<Int>()
 
 	for num in array {
@@ -13,3 +13,5 @@ func twoNumberSum(_ array: inout [Int], _ targetSum: Int) -> [Int] {
 
 	return []
 }
+
+print(twoNumberSum([1,2,3,4,5], 8))

@@ -13,7 +13,7 @@ func wallsAndGates(_ matrix: inout [[Int]]) -> [[Int]] {
 
     func dfs(_ coord: [Int], _ currentDistance: Int) {
         let (row, col) = (coord[0], coord[1])
-        if matrix[row][col] == -1 || matrix[row][col] < currentDistance { return }
+        if matrix[row][col] < currentDistance { return }
 
         matrix[row][col] = currentDistance
 
@@ -40,7 +40,7 @@ func wallsAndGates(_ matrix: inout [[Int]]) -> [[Int]] {
 }
 
 var matrix = [[Int.max, -1, 0, Int.max], 
-              [Int.max, Int.max, Int.max, -1], 
+              [Int.max, Int.max, Int.max, 0], 
               [Int.max, -1, Int.max, -1], 
               [0, -1, Int.max, Int.max]]
 

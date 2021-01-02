@@ -1,57 +1,46 @@
 class TrieNode {
-    var word = ""
+    var end = false
     var children = [Character: TrieNode]()
 }
+
 class Trie {
-    var root = TrieNode()
+    let root = TrieNode()
     
     /** Inserts a word into the trie. */
     func insert(_ word: String) {
-        var currentNode = root
-        
+        var node = root
         for char in word {
-            if let node = currentNode.children[char] {
-                currentNode = node
+            if node.children[char] == nil {
+                node.children[char] = TrieNode()
             }
-            else {
-                let newNode = TrieNode()
-                currentNode.children[char] = newNode
-                currentNode = newNode
-            }
+            node = node.children[char]!
         }
-        
-        currentNode.word = word
+        node.end = true
     }
     
     /** Returns if the word is in the trie. */
     func search(_ word: String) -> Bool {
-        var currentNode = root
-        
-        for char in word {
-            if let node = currentNode.children[char] {
-                currentNode = node
-            }
-            else {
-                return false
-            }
+        if let node = find(word) {
+            return node.end
         }
-        
-        return currentNode.word.isEmpty ? false : true
+        return false
     }
     
     /** Returns if there is any word in the trie that starts with the given prefix. */
-    func startsWith(_ prefix: String) -> Bool {
-        var currentNode = root
-        
-        for char in prefix {
-            if let node = currentNode.children[char] {
-                currentNode = node
+    func startsWith(_ prefix: String) -> Bool {        
+        return find(prefix) != nil
+    }
+    
+    func find(_ str: String) -> TrieNode? {
+        var node = root
+        for char in str {
+            if node.children[char] == nil {
+                return nil
             }
-            else {
-                return false
-            }
+            node = node.children[char]!
         }
-        
-         return currentNode.children.isEmpty && currentNode.word.isEmpty ? false : true
+        return node
     }
 }
+
+

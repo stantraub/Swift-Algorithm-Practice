@@ -1,0 +1,17 @@
+Q1: 
+
+Design an app like Apple News (with infinite scroll). Do not worry about the scalability - things to design
+i) What APIs/backend services you would request from backend team?
+ii) Data format of the APIs
+iii) How would you parse the APIs?
+iv) How would you design the UI? How would you implement infinite scroll?
+v) Decisions like how many news stories you would like to bring in one API call? How would you structure the data? How would you store it for persistence
+
+Q2: 
+
+You have to implement a pull to refresh functionality in a ViewController which contains a TableView. Currently, the TableView is displaying stories from a data source which contains the following stories
+[A, B, C, D]
+when you pull to refresh, you get three new stories from server : [D, E, F]
+now you have to display the stories in this order [D, E, F, A, B, C]
+Note: when you pull to refresh, you have to display the recently fetched stories first and then the previous stories. You don't have to worry about the UI details of pull to refresh feature. Also, don't worry about implementing the TableView methods, just implement the function pullToRefresh()
+Follow up: How would you improve the efficiency?

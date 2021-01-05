@@ -15,3 +15,9 @@ when you pull to refresh, you get three new stories from server : [D, E, F]
 now you have to display the stories in this order [D, E, F, A, B, C]
 Note: when you pull to refresh, you have to display the recently fetched stories first and then the previous stories. You don't have to worry about the UI details of pull to refresh feature. Also, don't worry about implementing the TableView methods, just implement the function pullToRefresh()
 Follow up: How would you improve the efficiency?
+
+Q3:
+
+What parameters would you keep in mind while designing an iOS app to make sure you are using all the system resources efficiently?
+What is concurrency? How would you achieve concurrency in iOS app? When do you need it?
+What are thread safe queues? (related to GCD)

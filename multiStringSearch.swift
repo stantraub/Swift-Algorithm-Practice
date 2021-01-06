@@ -41,7 +41,7 @@ func multiStringSearch(_ bigString: String, _ smallStrings: [String]) -> [Bool] 
 		findSmallSubstrings(i, bigStringArr, trie, &foundWords)
 	}
 
-	return smallStrings.map { foundWords.contains($0)}
+	return smallStrings.map { foundWords.contains($0) }
 }
 
 func findSmallSubstrings(_ startIndex: Int, _ bigStringArr: [Character], _ trie: Trie, _ foundWords: inout Set<String>) {

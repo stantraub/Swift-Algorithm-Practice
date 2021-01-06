@@ -1,0 +1,48 @@
+Uber API
+
+Questions to ask:
+1) what features are we designing
+
+Entities
+-Passenger
+    -CreateRide(userId: String, pickup: L, dest: L)
+        -calls FindDriver(Uber's internal API has an algorithm or formula that finds a driver that's free)
+            -FindDriver eventually calls EditRide(driverInfo: DriverInfo) to edit the ride object's driver info
+    -GetRide(userId)
+    -CancelRide(userId)
+    -StreamDriverLocation(userId: String)
+
+
+-Driver
+    -SetDriverStatus(userId: String, driverStatus: DriverStatus)
+        -FindRide called in Ubers interal system
+            - Ride object (or null if it cant find anything in 30 sec) gets returned from FindRide
+        -AcceptRide(userId: String)
+        -EditRide
+    -PushLocation(userId: String, )
+
+Ride (ride object created behind the scenes)
+- rideId: String
+- passengerId: String
+- driverInfo: DriverInfo
+- estimatedPrice: Int
+- timeValues
+- rideStatus: RideStatus
+
+PoolRide
+- driverInfo
+- rides: [Ride]
+
+ENUMS: 
+
+RideStatus
+- created
+- matched
+- started
+- finished
+- cancelled 
+
+DriverStatus
+- unavailable
+- in-ride (could possibly be done if doing uber pool and all seats are full in car)
+- stand by

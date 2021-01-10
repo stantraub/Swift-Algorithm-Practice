@@ -1,0 +1,37 @@
+Features and Questions to ask 
+-messaging
+-org (channels)
+-unread and mentions (cross-device sync)
+-backend
+-20M users 
+    -assume 50k will be the largest channel
+-latency
+
+
+1) persistent storage on app boot
+2) real-time messaging
+
+
+Messages table
+id   channelId  senderId  sentAt  body  mentions
+
+Read Recipts table 
+id orgId channelId userId lastSeen
+
+Channel Last Activity
+id orgId channelId  lastMessageTime
+
+
+Scalability
+-Sharding with Smart Sharding solution
+-use a service with key value stores so that we know which shard to hit
+
+
+Clients issue requests to load balancers
+-load balancers use round robin approach to distribute the requests 
+-to figure out which shard to hit, the servers consult the key value store which directs them to the correct shard
+
+
+Pubsub system
+-Kafka topics get all the messages that are being sent by client and then pushing them all the way back to correct clients who should be listening to them
+-Use websockets to have long lived connection 

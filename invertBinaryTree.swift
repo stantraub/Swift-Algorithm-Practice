@@ -1,9 +1,8 @@
 func invertBinaryTree(tree: BinaryTree?) {
-	if let tree = tree {
-		swap(tree)
-		invertBinaryTree(tree: tree.left)
-		invertBinaryTree(tree: tree.right)
-	}
+	guard let root = tree else { return }
+	swap(root)
+	invertBinaryTree(tree: root.left)
+	invertBinaryTree(tree: root.right)
 }
 
 func swap(_ root: BinaryTree) {

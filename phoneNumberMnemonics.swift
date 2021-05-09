@@ -1,23 +1,23 @@
 func phoneNumberMnemonics(_ phoneNumber: String) -> [String] {
     var currentMnemonic = Array(repeating: Character("0"), count: phoneNumber.count)
     var mnemonicsFound = [String]()
-    var phoneNumberArr = Array(phoneNumber)
+    let phoneNumberArr = Array(phoneNumber)
 
-    phoneNumberMnenomicsHelper(0, &phoneNumberArr, &currentMnemonic, &mnemonicsFound)
+    phoneNumberMnenomicsHelper(0, phoneNumberArr, &currentMnemonic, &mnemonicsFound)
     return mnemonicsFound
 }
 
-func phoneNumberMnenomicsHelper(_ idx: Int, _ phoneNumber: inout [Character], _ currentMnemonic: inout [Character], _ mnemonicsFound: inout [String]) {
+func phoneNumberMnenomicsHelper(_ idx: Int, _ phoneNumber: [Character], _ currentMnemonic: inout [Character], _ mnemonicsFound: inout [String]) {
     if idx == phoneNumber.count {
-            let mnemonic = String(currentMnemonic)
-            mnemonicsFound.append(mnemonic)
+        let mnemonic = String(currentMnemonic)
+        mnemonicsFound.append(mnemonic)
     } else {
-            let digit = phoneNumber[idx]
-            let letters = digits[digit]!
-            for letter in letters {
-                    currentMnemonic[idx] = letter
-                    phoneNumberMnenomicsHelper(idx + 1, &phoneNumber, &currentMnemonic, &mnemonicsFound)
-            }
+        let digit = phoneNumber[idx]
+        let letters = digits[digit]!
+        for letter in letters {
+                currentMnemonic[idx] = letter
+                phoneNumberMnenomicsHelper(idx + 1, phoneNumber, &currentMnemonic, &mnemonicsFound)
+        }
     }
 }
 

@@ -1,3 +1,4 @@
+// O(4^n * n) time and space
 func phoneNumberMnemonics(_ phoneNumber: String) -> [String] {
     var currentMnemonic = Array(repeating: Character("0"), count: phoneNumber.count)
     var mnemonicsFound = [String]()
@@ -15,8 +16,8 @@ func phoneNumberMnenomicsHelper(_ idx: Int, _ phoneNumber: [Character], _ curren
         let digit = phoneNumber[idx]
         let letters = digits[digit]!
         for letter in letters {
-                currentMnemonic[idx] = letter
-                phoneNumberMnenomicsHelper(idx + 1, phoneNumber, &currentMnemonic, &mnemonicsFound)
+            currentMnemonic[idx] = letter
+            phoneNumberMnenomicsHelper(idx + 1, phoneNumber, &currentMnemonic, &mnemonicsFound)
         }
     }
 }

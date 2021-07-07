@@ -9,11 +9,15 @@ v) Decisions like how many news stories you would like to bring in one API call?
 
 Q2: 
 
-You have to implement a pull to refresh functionality in a ViewController which contains a TableView. Currently, the TableView is displaying stories from a data source which contains the following stories
+You have to implement a pull to refresh functionality in a ViewController which contains a TableView. 
+Currently, the TableView is displaying stories from a data source which contains the following stories
 [A, B, C, D]
 when you pull to refresh, you get three new stories from server : [D, E, F]
 now you have to display the stories in this order [D, E, F, A, B, C]
-Note: when you pull to refresh, you have to display the recently fetched stories first and then the previous stories. You don't have to worry about the UI details of pull to refresh feature. Also, don't worry about implementing the TableView methods, just implement the function pullToRefresh()
+Note: when you pull to refresh, you have to display the recently fetched stories 
+first and then the previous stories. You don't have to worry about the UI 
+details of pull to refresh feature. Also, don't worry about implementing the TableView methods, 
+just implement the function pullToRefresh()
 Follow up: How would you improve the efficiency?
 
 Q3:

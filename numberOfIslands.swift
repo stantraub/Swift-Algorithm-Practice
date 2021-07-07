@@ -48,12 +48,8 @@ func numIslands(_ grid: [[Character]]) -> Int {
     let dirs = [[0,1], [1, 0], [-1, 0], [0, -1]]
 
     func inBounds(_ row: Int, _ col: Int, _ dir: [Int]) -> Bool {
-        if (dir[0] + row >= 0 && dir[0] + row < matrix.count && dir[1] + col >= 0 && dir[1] + col < matrix[0].count) {
-            return true
-        } else {
-            return false
-        }
-
+        dir[0] + row >= 0 && dir[0] + row < matrix.count 
+        && dir[1] + col >= 0 && dir[1] + col < matrix[0].count
     }
 
     func dfs(_ row: Int, _ col: Int) {

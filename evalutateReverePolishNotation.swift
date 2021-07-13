@@ -7,8 +7,8 @@ class Solution {
             if !operators.contains(token) {
                 stack.append(Int(token)!)
             } else {
-                let second = stack.popLast()!
-                let first = stack.popLast()!
+                let second = stack.removeLast()
+                let first = stack.removeLast()
 
                 if token == "+" {
                     stack.append(first + second)
@@ -22,6 +22,6 @@ class Solution {
             }
         }
 
-        return stack.popLast()!
+        return stack.removeLast()
     }
 }

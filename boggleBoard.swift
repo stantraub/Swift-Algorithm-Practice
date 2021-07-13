@@ -7,18 +7,18 @@ class Trie {
     var root = TrieNode()
 
     func insert( _ word: String) {
-            var curNode = root
+        var curNode = root
 
-            for char in word {
-                    let strChar = String(char)
-                    if curNode.children[strChar] == nil {
-                            curNode.children[strChar] = TrieNode()
-                    }
-
-                    curNode = curNode.children[strChar]!
+        for char in word {
+            let strChar = String(char)
+            if curNode.children[strChar] == nil {
+                curNode.children[strChar] = TrieNode()
             }
 
-            curNode.end = word 
+            curNode = curNode.children[strChar]!
+        }
+
+        curNode.end = word 
     }
 }
 
@@ -26,7 +26,7 @@ func buildTrie(_ words: [String]) -> Trie {
     let trie = Trie()
 
     for word in words {
-            trie.insert(word)
+        trie.insert(word)
     }
     return trie
 }

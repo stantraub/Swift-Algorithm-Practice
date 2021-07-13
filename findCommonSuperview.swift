@@ -1,4 +1,4 @@
-func getCommonSuperviews(with firstView: UIView, and secondView: UIView) -> UIView? {
+func getCommonSuperview(with firstView: UIView, and secondView: UIView) -> UIView? {
     var currentView = firstView.superview
     var otherView = secondView.superview
     firstView.tag = -1  // -1 means this node is visited.

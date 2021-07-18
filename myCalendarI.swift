@@ -10,14 +10,9 @@ class Node {
     }
 }
 
-
 class MyCalendar {
     
     var root: Node?
-
-    init() {
-        
-    }
     
     func book(_ start: Int, _ end: Int) -> Bool {
         if root == nil {

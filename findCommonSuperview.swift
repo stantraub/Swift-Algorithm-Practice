@@ -4,7 +4,7 @@ func getCommonSuperview(with firstView: UIView, and secondView: UIView) -> UIVie
     firstView.tag = -1  // -1 means this node is visited.
 
     while currentView != nil {
-        firstView.superview?.tag = -1  // -1 means this node is visited.
+        currentView.tag = -1  // -1 means this node is visited.
         currentView = currentView?.superview
     }
 

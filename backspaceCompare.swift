@@ -9,7 +9,7 @@ func compareHelper(string: String) -> String {
         if char != "#" {
             stack.append(char)
         } else {
-            stack.popLast()
+            stack.removeLast()
         }
     }
     

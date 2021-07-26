@@ -1,4 +1,4 @@
-func generateParenthesis(_ max: Int) -> [String] {
+func generateParentheses(_ max: Int) -> [String] {
     var res = [String]()
     
     func backtrack(_ currentString: String, _ open: Int, _ close: Int) {

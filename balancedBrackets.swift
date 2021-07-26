@@ -1,4 +1,5 @@
 func balencedParentheses(string: String) -> Bool {
+    let openingChars = [")" : "(", "]" : "[", "}" : "{"]
     var stack = [String]()
     
     for char in string {

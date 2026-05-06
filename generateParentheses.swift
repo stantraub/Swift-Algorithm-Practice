@@ -1,16 +1,21 @@
-func generateParentheses(_ max: Int) -> [String] {
-    var res = [String]()
-    
-    func backtrack(_ currentString: String, _ open: Int, _ close: Int) {
-        if currentString.count == max * 2 {
-            res.append(currentString)
+func generateParenthesis(_ n: Int) -> [String] {
+    var result = [String]()
+
+    func backtrack(curString: String, open: Int, close: Int) {
+        if curString.count == n * 2 {
+            result.append(curString)
             return
         }
-        
-        if open < max { backtrack(currentString + "(", open + 1, close) }
-        if close < open { backtrack(currentString + ")", open, close + 1) }
+
+        if open < n {
+            backtrack(curString: curString + "(", open: open + 1, close: close)
+        }
+
+        if close < open {
+            backtrack(curString: curString + ")", open: open, close: close + 1)
+        }
     }
-    
-    backtrack("", 0, 0)
-    return res
+
+    backtrack(curString: "", open: 0, close: 0)
+    return result
 }

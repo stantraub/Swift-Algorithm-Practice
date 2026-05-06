@@ -1,11 +1,11 @@
 func containsDuplicate(_ nums: [Int]) -> Bool {
-    var mySet = Set<Int>()
+    var numsSet = Set<Int>()
     
     for num in nums {
-        if mySet.contains(num) {
+        if numsSet.contains(num) {
             return true
         } else {
-            mySet.insert(num)
+            numsSet.insert(num))
         }
     }
     

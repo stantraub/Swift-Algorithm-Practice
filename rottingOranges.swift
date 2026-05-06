@@ -1,49 +1,50 @@
 func orangesRotting(_ grid: [[Int]]) -> Int {
-    var rotten: Set<String> = []
-    var fresh: Set<String> = []
-    
-    for row in grid.indices {
-        for col in grid[0].indices {
-            if grid[row][col] == 1 {
-                fresh.insert("\(row)\(col)")
-            }
-            else if grid[row][col] == 2 {
-                rotten.insert("\(row)\(col)")
-            }
-        }
-    }
-    
-    var minutes = 0
-    let dirs = [[1,0], [0, 1], [-1, 0], [0, -1]]
-    
-    while fresh.count > 0 {
-        var infected: Set<String> = []
-        
-        for key in rotten {
-            let rowIndex = key.index(key.startIndex, offsetBy: 0)
-            let colIndex = key.index(key.startIndex, offsetBy: 1)
-            let row = Int(String(key[rowIndex]))!
-            let col = Int(String(key[colIndex]))!
-            
-            for dir in dirs {
-                let nextRow = row + dir[0]
-                let nextCol = col + dir[1]
-                
-                if fresh.contains("\(nextRow)\(nextCol)") {
-                    fresh.remove("\(nextRow)\(nextCol)")
-                    infected.insert("\(nextRow)\(nextCol)")
-                }
-            }
-        }
-        
-        if infected.count == 0 {
-            return -1
-        }
-        
-        rotten = infected
-        minutes += 1
-    }
-    
-    
-    return minutes
+    func orangesRotting(_ grid: [[Int]]) -> Int {
+         var grid = grid
+         var fresh = 0
+         var rotten = [[Int]]()
+         
+         for row in 0..<grid.count {
+             for col in 0..<grid[0].count {
+                 if grid[row][col] == 1 {
+                     fresh += 1
+                 } else if grid[row][col] == 2 {
+                     rotten.append([row, col])
+                 }
+             }
+         }
+
+         let dirs = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+         var minTime = 0
+
+         while !rotten.isEmpty {
+             let queue = rotten
+             rotten = []
+
+             for pos in queue {
+                 for dir in dirs {
+                     let nextRow = pos[0] + dir[0]
+                     let nextCol = pos[1] + dir[1]
+
+                     if inBounds(row: nextRow, col: nextCol, grid: grid) {
+                         if grid[nextRow][nextCol] == 1 {
+                             grid[nextRow][nextCol] = 2
+                             fresh -= 1
+                             rotten.append([nextRow, nextCol])
+                         }
+                     }
+                 }
+             }
+
+             if !rotten.isEmpty {
+                 minTime += 1
+             }
+         }
+
+         return fresh == 0 ? minTime : -1
+     }
+
+     func inBounds(row: Int, col: Int, grid: [[Int]]) -> Bool {
+         row >= 0 && row < grid.count && col >= 0 && col < grid[0].count
+     }
 }

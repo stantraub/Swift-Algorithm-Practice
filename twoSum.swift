@@ -1,17 +1,14 @@
 func twoNumberSum(_ array: [Int], _ targetSum: Int) -> [Int] {
-	var complements = Set<Int>()
+    var seen = [Int: Int]()
 
-	for num in array {
-		let complement = targetSum - num
-
-		if complements.contains(complement) {
-			return [complement, num]
-		} else {
-			complements.insert(num)
-		}
-	}
-
-	return []
+    for (i, num) in nums.enumerated() {
+        let complement = target - num
+        if let j = seen[complement] {
+            return [j, i]
+        }
+        seen[num] = i
+    }
+    return []
 }
 
 print(twoNumberSum([1,2,3,4,5], 8))
